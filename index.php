@@ -73,34 +73,17 @@
                 </thead>
                 <tbody>
                     <?php
+
+
                     // foreach in hotel list
                     foreach ($hotelList as $hotel) {
 
-                        // row start
                         echo '<tr>';
-
-                        // foreach in hotel
-                        foreach ($hotel as $key => $element) {
-
-                            // parking value change
-                            if ($key === 'parking') {
-                                if ($element === false) {
-                                    $element = 'no';
-                                } else {
-                                    $element = 'si';
-                                }
-                            }
-
-                            // add km to distance
-                            if ($key === 'distance_to_center') {
-                                $element .= ' km';
-                            }
-
-                            // add column
-                            echo '<td>' . $element . '</td>';
-                        }
-
-                        // row end
+                        echo '<td>' . $hotel['name'] . '</td>';
+                        echo '<td>' . $hotel['description'] . '</td>';
+                        echo '<td>' . ($hotel['parking'] ? 'si' : 'no') . '</td>';
+                        echo '<td>' . $hotel['vote'] . '</td>';
+                        echo '<td>' . $hotel['distance_to_center'] . ' km</td>';
                         echo '</tr>';
                     }
                     ?>
