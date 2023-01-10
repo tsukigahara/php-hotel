@@ -55,13 +55,40 @@
         ],
 
     ];
+
+    // for filter by parking
+    if ($_GET["filterBy"] === 'parking') {
+        // callback function
+        function park($var)
+        {
+            return ($var['parking']);
+        };
+
+        // filter array
+        $hotelList = array_filter($hotelList, "park");
+    }
     ?>
 </head>
 
 <body>
     <div class="container">
-        <div class="row ${1| ,row-cols-2,row-cols-3, auto,justify-content-md-center,|}">
-            <table class="table table-dark table-striped">
+        <h1>Hotel List</h1>
+        <div class="row my-3">
+            <!-- form -->
+            <form action="">
+                <!-- input -->
+                <input type="checkbox" name="filterBy" value="parking" id="">
+                <label for="filterBy">Parking needed</label>
+
+                <!-- button -->
+                <button type="submit" class="btn btn-primary">filter</button>
+                <button type="reset" class="btn btn-warning">reset</button>
+            </form>
+        </div>
+        <div class="row">
+
+            <!-- table -->
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
@@ -73,8 +100,6 @@
                 </thead>
                 <tbody>
                     <?php
-
-
                     // foreach in hotel list
                     foreach ($hotelList as $hotel) {
 
